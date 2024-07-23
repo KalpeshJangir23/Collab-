@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "564070232586",
+    "project_id": "collabnotion-5b976",
+    "storage_bucket": "collabnotion-5b976.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564070232586:android:56dfac2b5def8b84eea5f3",
+        "android_client_info": {
+          "package_name": "com.example.collab_notion_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "564070232586-80rn8ojmiplusqfrmncruom6jaa7lqku.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.collab_notion_clone",
+            "certificate_hash": "7cb6e3762f71e5fbe4bb3108929eb68c8aba4f77"
+          }
+        },
+        {
+          "client_id": "564070232586-bmqq9je2tm83d6tqdsvoc2664ioh07rm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkhdFkDZr607vGFKB6sM1DUQGBKXsJ0gY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "564070232586-bmqq9je2tm83d6tqdsvoc2664ioh07rm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "564070232586-e7tcgfidruogmd4ilqmqhue6nusuqmg7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.collabNotionClone"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
