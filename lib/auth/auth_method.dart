@@ -32,7 +32,8 @@ class AuthMethod extends ChangeNotifier {
 
   // Stream<User?> get authStateChange => _auth.authStateChanges();
 
-  void signInWithGoogle() async {
+  Future<String> signInWithGoogle() async {
+    String res = "";
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       final googleAuth = await googleUser?.authentication;
@@ -40,12 +41,14 @@ class AuthMethod extends ChangeNotifier {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
+      res = "GoogleSignIn";
 
       UserCredential userCred = await _auth.signInWithCredential(credential);
       print(userCred.user?.displayName);
     } catch (e) {
       print(e.toString());
     }
+    return res;
   }
 
   Future<String> newUserCreationUsingEmailAndPassword(String email, String password) async {

@@ -32,9 +32,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     super.dispose();
   }
 
-  void signInWithGoogle(ref) {
+  void signInWithGoogle(ref, context) {
     // Implement your Google Sign-In logic here
-    ref.read(authControllerProvider).signInWithGoogle();
+    ref.read(authControllerProvider).googleSignIn(context);
   }
 
   void oldUserEntry(ref, context) {
@@ -93,7 +93,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   children: [
                     ButtonWithNameAndImage(
                       imageName: "assets/google_icon.png",
-                      ontap: () => signInWithGoogle(ref),
+                      ontap: () => signInWithGoogle(ref, context),
                       loginfield: "Continue With Google",
                     ),
                     const SizedBox(height: 10),
