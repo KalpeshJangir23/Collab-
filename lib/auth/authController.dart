@@ -1,4 +1,4 @@
-import 'package:collab_notion_clone/Screens/HomePart/fileStructure/tree.dart';
+import 'package:collab_notion_clone/Screens/HomePart/home_screen.dart';
 import 'package:collab_notion_clone/Screens/HomePart/home_screen.dart';
 import 'package:collab_notion_clone/auth/auth_method.dart';
 import 'package:flutter/material.dart';

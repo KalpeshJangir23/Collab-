@@ -1,11 +1,13 @@
-import 'package:collab_notion_clone/Screens/HomePart/home_screen.dart';
+import 'package:collab_notion_clone/Screens/HomePart/model/tree_model.dart';
+import 'package:collab_notion_clone/Screens/HomePart/widget/CustomScaffold.dart';
 import 'package:flutter/material.dart';
 
 class NodeWidget extends StatelessWidget {
   final TreeNode node;
   final Function(TreeNode) onAddChild;
+  final VoidCallback onTap;
 
-  const NodeWidget({super.key, required this.node, required this.onAddChild});
+  const NodeWidget({super.key, required this.node, required this.onAddChild, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +18,19 @@ class NodeWidget extends StatelessWidget {
           children: [
             const Icon(Icons.folder),
             const SizedBox(width: 8),
-            Text(
-              node.title,
-              style: Theme.of(context).textTheme.displaySmall,
+            GestureDetector(
+              onTap: () {
+                if (node.scaffold != null) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => node.scaffold!),
+                  );
+                }
+              },
+              child: Text(
+                node.title,
+                style: Theme.of(context).textTheme.displaySmall,
+              ),
             ),
             IconButton(
               icon: const Icon(Icons.add),
@@ -36,6 +48,7 @@ class NodeWidget extends StatelessWidget {
                 .map((child) => NodeWidget(
                       node: child,
                       onAddChild: onAddChild,
+                      onTap: () {},
                     ))
                 .toList(),
           ),
@@ -68,7 +81,10 @@ class NodeWidget extends StatelessWidget {
               onPressed: () {
                 final newTitle = controller.text;
                 if (newTitle.isNotEmpty) {
-                  onAddChild(TreeNode(newTitle));
+                  onAddChild(TreeNode(
+                    newTitle,
+                    customScafflod(newTitle),
+                  ));
                 }
                 Navigator.of(context).pop();
               },
