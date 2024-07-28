@@ -1,7 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/foundation.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first, file_names
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ButtonWithNameAndImage extends StatelessWidget {
   final String imageName;

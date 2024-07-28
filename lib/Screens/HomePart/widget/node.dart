@@ -1,14 +1,21 @@
 import 'package:collab_notion_clone/Screens/HomePart/model/tree_model.dart';
 import 'package:collab_notion_clone/Screens/HomePart/widget/CustomScaffold.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 
-class NodeWidget extends StatelessWidget {
+class NodeWidget extends StatefulWidget {
   final TreeNode node;
   final Function(TreeNode) onAddChild;
   final VoidCallback onTap;
 
   const NodeWidget({super.key, required this.node, required this.onAddChild, required this.onTap});
 
+  @override
+  State<NodeWidget> createState() => _NodeWidgetState();
+}
+
+class _NodeWidgetState extends State<NodeWidget> {
+  final _controller = QuillController.basic();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,15 +27,15 @@ class NodeWidget extends StatelessWidget {
             const SizedBox(width: 8),
             GestureDetector(
               onTap: () {
-                if (node.scaffold != null) {
+                if (widget.node.scaffold != null) {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => node.scaffold!),
+                    MaterialPageRoute(builder: (context) => widget.node.scaffold!),
                   );
                 }
               },
               child: Text(
-                node.title,
+                widget.node.title,
                 style: Theme.of(context).textTheme.displaySmall,
               ),
             ),
@@ -44,10 +51,10 @@ class NodeWidget extends StatelessWidget {
           padding: const EdgeInsets.only(left: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: node.children
+            children: widget.node.children
                 .map((child) => NodeWidget(
                       node: child,
-                      onAddChild: onAddChild,
+                      onAddChild: widget.onAddChild,
                       onTap: () {},
                     ))
                 .toList(),
@@ -81,9 +88,13 @@ class NodeWidget extends StatelessWidget {
               onPressed: () {
                 final newTitle = controller.text;
                 if (newTitle.isNotEmpty) {
-                  onAddChild(TreeNode(
+                  widget.onAddChild(TreeNode(
                     newTitle,
-                    customScafflod(newTitle),
+                    customScaffold(
+                      newTitle,
+                      context,
+                      _controller,
+                    ),
                   ));
                 }
                 Navigator.of(context).pop();

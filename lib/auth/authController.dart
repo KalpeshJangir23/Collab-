@@ -1,8 +1,10 @@
-import 'package:collab_notion_clone/Screens/HomePart/home_screen.dart';
-import 'package:collab_notion_clone/Screens/HomePart/home_screen.dart';
-import 'package:collab_notion_clone/auth/auth_method.dart';
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:riverpod/riverpod.dart';
+
+import 'package:collab_notion_clone/Screens/HomePart/home_screen.dart';
+import 'package:collab_notion_clone/auth/auth_method.dart';
 
 final authControllerProvider = Provider(
   (ref) => AuthController(
@@ -17,7 +19,7 @@ class AuthController {
   Future<void> googleSignIn(context) async {
     String res = await _authMethod.signInWithGoogle();
     if (res == "GoogleSignIn") {
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomeScreen()));
     } else {
       print("GoogleSignIN mai issue");
     }

@@ -1,7 +1,5 @@
 // ignore_for_file: deprecated_member_use
 
-import 'dart:ffi';
-
 import 'package:collab_notion_clone/auth/coreFireBaseProvider/coreFireBaseProvider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

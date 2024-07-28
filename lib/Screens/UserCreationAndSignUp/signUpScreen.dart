@@ -1,6 +1,7 @@
 // ignore: file_names
+// ignore_for_file: file_names, duplicate_ignore
+
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:collab_notion_clone/Screens/UserCreationAndSignUp/login_screen.dart';
 import 'package:collab_notion_clone/Screens/UserCreationAndSignUp/widgets/CustomTextField.dart';
 import 'package:collab_notion_clone/Screens/UserCreationAndSignUp/widgets/buttonWithNameAndImage.dart';
 import 'package:collab_notion_clone/Screens/UserCreationAndSignUp/widgets/customButton.dart';

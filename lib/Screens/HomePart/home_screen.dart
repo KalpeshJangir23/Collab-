@@ -1,7 +1,10 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:collab_notion_clone/Screens/HomePart/model/tree_model.dart';
 import 'package:collab_notion_clone/Screens/HomePart/widget/CustomScaffold.dart';
 import 'package:collab_notion_clone/Screens/HomePart/widget/node.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,6 +14,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _controller = QuillController.basic();
+  // final _editorFocusNode = FocusNode();
+  // final _editorScrollController = ScrollController();
+  // final _configurations = QuillEditorConfigurations(controller: QuillController.basic());
   List<TreeNode> roots = [];
 
   void _addRootNode() {
@@ -38,7 +45,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 final newTitle = controller.text;
                 if (newTitle.isNotEmpty) {
                   setState(() {
-                    roots.add(TreeNode(newTitle, customScafflod(newTitle)));
+                    roots.add(
+                      TreeNode(
+                        newTitle,
+                        customScaffold(
+                          newTitle,
+                          context,
+                          _controller,
+                        ),
+                      ),
+                    );
                   });
                 }
                 Navigator.of(context).pop();
